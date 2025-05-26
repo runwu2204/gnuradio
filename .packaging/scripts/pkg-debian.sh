@@ -42,4 +42,4 @@ cd gnuradio/debian
 cp changelog changelog.prev
 echo "gnuradio ($VERSION_STRING~$GITBRANCH_CLEAN~$GITREV~$DISTRIBUTION-$REV) $DISTRIBUTION; urgency=medium\n\n  * $GITBRANCH at $GIT_COMMIT\n\n -- $NAME $EMAIL  $DATESTR\n\n$(cat changelog)" > changelog
 
-debuild -S -d
+debuild -uc -us -d
