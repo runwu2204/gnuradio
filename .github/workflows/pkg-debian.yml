@@ -71,6 +71,13 @@ jobs:
         export GITBRANCH="main"
         export REV="${{ github.event.inputs.rev }}"
         cd /build && sh $GITHUB_WORKSPACE/.packaging/scripts/pkg-debian.sh
+    
+    - name: uploadBuild
+      uses: actions/upload-artifact@v4
+      with:
+          name: build-output  # Artifact 名称
+          path: /build         # 要保存的文件或文件夹路径
+          
     - name: Push to Launchpad
       run: 
         cd /build && dput -c $GITHUB_WORKSPACE/.packaging/launchpad/dput.cf $GITBRANCH $(ls *.changes)
